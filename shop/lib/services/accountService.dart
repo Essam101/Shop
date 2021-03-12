@@ -1,33 +1,25 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:shop/services/userService.dart';
 
-class AccountService with ChangeNotifier {
-  final googleSignIn = GoogleSignIn();
-  bool _isSigningIn;
+final googleSignIn = GoogleSignIn();
 
-  googleSignInProvider() {
-    _isSigningIn = false;
-  }
+final _firebaseAuth = FirebaseAuth.instance;
 
-  bool get isSigningIn => _isSigningIn;
-
-  set isSigningIn(bool isSigningIn) {
-    _isSigningIn = isSigningIn;
-    notifyListeners();
-  }
-
-  Future login() async {
-    isSigningIn = true;
+class GoogleAuth {
+  Future login({BuildContext context}) async {
+    Provider.of<UserService>(context, listen: false).isSigningIn = true;
     GoogleSignInAccount user;
-    try {
-      user = await googleSignIn.signIn();
-      print(user);
-    } catch (e) {}
+    user = await googleSignIn.signIn();
 
     if (user == null) {
-      isSigningIn = false;
+      Provider.of<UserService>(context, listen: false).isSigningIn = false;
       return;
     } else {
       final googleAuth = await user.authentication;
@@ -37,43 +29,50 @@ class AccountService with ChangeNotifier {
         idToken: googleAuth.idToken,
       );
 
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      Provider.of<UserService>(context, listen: false).userCredential =
+          await _firebaseAuth
+              .signInWithCredential(credential)
+              .onError((error, stackTrace) {
+        print(error);
+        return null;
+      });
 
-      isSigningIn = false;
+      Provider.of<UserService>(context, listen: false).isSigningIn = false;
     }
-  }
-
-  void logout() async {
-    await googleSignIn.disconnect();
-    FirebaseAuth.instance.signOut();
   }
 }
-/*class AccountService with ChangeNotifier {
-  final _firebaseAuth = FirebaseAuth.instance;
-  Stream<User> get authStateChanges => _firebaseAuth.idTokenChanges();
 
-  Future<void> signOut() async {
-    await _firebaseAuth.signOut();
+class UserAndPasswordAuth {
+  Future<void> signIn(
+      {BuildContext context, String email, String password}) async {
+    Provider.of<UserService>(context, listen: false).userCredential =
+        await _firebaseAuth
+            .signInWithEmailAndPassword(
+                email: email + "@gmail.com", password: password)
+            .onError((error, stackTrace) {
+      print(error);
+      return null;
+    });
   }
 
-  Future<String> signIn({String email, String password}) async {
-    try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return "Signed in";
-    } on FirebaseAuthException catch (e) {
-      return e.message;
-    }
+  Future<void> signUp(
+      {BuildContext context, String email, String password}) async {
+    Provider.of<UserService>(context, listen: false).userCredential =
+        await _firebaseAuth
+            .createUserWithEmailAndPassword(
+                email: email + "@gmail.com", password: password)
+            .onError((error, stackTrace) {
+      print(error);
+      return null;
+    });
   }
+}
 
-  Future<String> signUp({String email, String password}) async {
-    try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-
-      return "Signed up";
-    } on FirebaseAuthException catch (e) {
-      return e.message;
-    }
+class FacebookAuth {
+  login({BuildContext context, String email, String password}) async {
+    var facebookLogin = new FacebookLogin();
+    var result = await facebookLogin.logIn(["email"]);
+    Provider.of<UserService>(context, listen: false).userCredential =
+        await _firebaseAuth.signInWithCustomToken(result.accessToken.token);
   }
-}*/
+}

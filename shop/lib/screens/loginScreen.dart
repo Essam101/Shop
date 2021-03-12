@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/screens/homeScreen.dart';
 import 'package:shop/services/accountService.dart';
+import 'package:shop/services/userService.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = "/loginScreen";
@@ -12,13 +13,23 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String emailController = "essamsaleh101@gmail.com";
+  String emailController = "essamsaleh101";
   String passwordController = "Essam 101";
+  UserAndPasswordAuth userAndPasswordAuth = new UserAndPasswordAuth();
+  GoogleAuth googleAuth = new GoogleAuth();
+  FacebookAuth facebookAuth = new FacebookAuth();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final accountService = Provider.of<AccountService>(context);
+    bool userStatus =
+        Provider.of<UserService>(context, listen: true).isLoggedIn;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -28,6 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
             shrinkWrap: true,
             padding: EdgeInsets.only(left: 24.0, right: 24.0),
             children: <Widget>[
+              Center(
+                  child: Text(
+                userStatus.toString(),
+                style: TextStyle(fontSize: 30),
+              )),
               SizedBox(height: 48.0),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
@@ -70,10 +86,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   onPressed: () async {
-                    /*    await accountService.signUp(
+                    await userAndPasswordAuth.signIn(
+                      context: context,
                       email: emailController.trim(),
                       password: passwordController.trim(),
-                    );*/
+                    );
                   },
                   padding: EdgeInsets.all(12),
                   color: Colors.lightBlueAccent,
@@ -88,12 +105,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       icon: FaIcon(FontAwesomeIcons.google,
                           size: 30, color: Colors.red),
                       onPressed: () async {
-                        await accountService.login();
+                        await googleAuth.login(context: context);
                       }),
                   IconButton(
                       icon: FaIcon(FontAwesomeIcons.facebook,
                           size: 30, color: Colors.blue),
-                      onPressed: null)
+                      onPressed: () async {
+                        await facebookAuth.login();
+                      })
                 ],
               ),
               TextButton(
@@ -101,7 +120,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   'Forgot password?',
                   style: TextStyle(color: Colors.black54),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  print(Provider.of<UserService>(context, listen: false)
+                      .signOut());
+                },
               )
             ],
           ),

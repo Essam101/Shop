@@ -6,6 +6,8 @@ import 'package:shop/screens/loginScreen.dart';
 import 'package:shop/screens/splashScreen.dart';
 import 'package:shop/services/accountService.dart';
 
+import 'services/userService.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AccountService()),
+        ChangeNotifierProvider(create: (_) => UserService()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
