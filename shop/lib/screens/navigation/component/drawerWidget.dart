@@ -16,11 +16,7 @@ class DrawerWidget extends StatelessWidget {
     final userService = Provider.of<UserService>(context, listen: true);
 
     return Drawer(
-      // Add a ListView to the drawer. This ensures the user can scroll
-      // through the options in the drawer if there isn't enough vertical
-      // space to fit everything.
       child: ListView(
-        // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
@@ -32,9 +28,9 @@ class DrawerWidget extends StatelessWidget {
           ListTile(
             title: Text('logOut'),
             trailing: Wrap(
-              spacing: 12, // space between two icons
+              spacing: 12,
               children: <Widget>[
-                Icon(Icons.exit_to_app), // icon-1
+                Icon(Icons.exit_to_app), //
               ],
             ),
             onTap: () async {

@@ -13,12 +13,10 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text('Index 1: Business', style: optionStyle),
-    Text('Index 3: Settings', style: optionStyle)
+    Text('Index 1: Business'),
+    Text('Index 3: Settings')
   ];
 
   void _onItemTapped(int index) {
@@ -31,13 +29,11 @@ class _NavigationScreenState extends State<NavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NavigationScreen '),
+        title: Text('NavigationScreen '),
         centerTitle: true,
       ),
       drawer: DrawerWidget(context: context),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBarWidget(
         callback: _onItemTapped,
         currentIndex: _selectedIndex,
