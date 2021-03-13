@@ -1,11 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'file:///D:/Shop/shop/lib/screens/home/homeScreen.dart';
-import 'file:///D:/Shop/shop/lib/screens/login/loginScreen.dart';
-import 'file:///D:/Shop/shop/lib/screens/splash/splashScreen.dart';
+
 import 'package:shop/services/loginService.dart';
 
+import 'screens/home/homeScreen.dart';
+import 'screens/login/loginScreen.dart';
+import 'screens/navigation/navigationScreen.dart';
+import 'screens/splash/splashScreen.dart';
 import 'services/userService.dart';
 
 void main() async {
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         initialRoute: SplashScreen.id,
         routes: {
           SplashScreen.id: (_) => SplashScreen(),
+          NavigationScreen.id: (_) => NavigationScreen(),
           HomeScreen.id: (_) => HomeScreen(),
           LoginScreen.id: (_) => LoginScreen(),
         },

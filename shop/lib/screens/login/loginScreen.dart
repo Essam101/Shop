@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'file:///D:/Shop/shop/lib/screens/home/homeScreen.dart';
+
 import 'package:shop/services/loginService.dart';
 import 'package:shop/services/userService.dart';
+
+import '../navigation/navigationScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = "/loginScreen";
@@ -28,8 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool userStatus =
-        Provider.of<UserService>(context, listen: true).isLoggedIn;
+    final userService = Provider.of<UserService>(context, listen: true);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -41,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               Center(
                   child: Text(
-                userStatus.toString(),
+                userService.isLoggedIn.toString(),
                 style: TextStyle(fontSize: 30),
               )),
               SizedBox(height: 48.0),
@@ -91,6 +92,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       email: emailController.trim(),
                       password: passwordController.trim(),
                     );
+                    if (userService.isLoggedIn)
+                      Navigator.pushReplacementNamed(
+                          context, NavigationScreen.id);
                   },
                   padding: EdgeInsets.all(12),
                   color: Colors.lightBlueAccent,
@@ -106,12 +110,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           size: 30, color: Colors.red),
                       onPressed: () async {
                         await googleAuth.login(context: context);
+                        if (userService.isLoggedIn)
+                          Navigator.pushReplacementNamed(
+                              context, NavigationScreen.id);
                       }),
                   IconButton(
                       icon: FaIcon(FontAwesomeIcons.facebook,
                           size: 30, color: Colors.blue),
                       onPressed: () async {
                         await facebookAuth.login();
+                        if (userService.isLoggedIn)
+                          Navigator.pushReplacementNamed(
+                              context, NavigationScreen.id);
                       })
                 ],
               ),
@@ -120,10 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'Forgot password?',
                   style: TextStyle(color: Colors.black54),
                 ),
-                onPressed: () {
-                  print(Provider.of<UserService>(context, listen: false)
-                      .signOut());
-                },
+                onPressed: () {},
               )
             ],
           ),
