@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shop/core/navigation.dart';
-import 'package:shop/screens/loginScreen.dart';
+import 'file:///D:/Shop/shop/lib/screens/login/loginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = "/splashScreen";
