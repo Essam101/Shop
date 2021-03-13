@@ -1,27 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:'
+import 'package:shop/core/preferences.dart';
+
 final googleSignIn = GoogleSignIn();
 
 final _firebaseAuth = FirebaseAuth.instance;
 
 class UserService with ChangeNotifier {
   UserCredential _userCredential;
-  bool _isSigningIn;
-  bool _isLoggedIn;
-
-  signOut() async {
-    await googleSignIn.disconnect();
-    await _firebaseAuth.signOut().then((value) => isLoggedIn = false);
-  }
-
-  bool get isSigningIn => _isSigningIn;
-
-  set isSigningIn(bool isSigningIn) {
-    _isSigningIn = isSigningIn;
-    notifyListeners();
-  }
+  bool _isLoggedIn = false;
 
   UserCredential get userCredential => _userCredential;
 
@@ -38,5 +26,9 @@ class UserService with ChangeNotifier {
   set isLoggedIn(bool x) {
     _isLoggedIn = x;
     notifyListeners();
+  }
+
+  signOut() async {
+    await _firebaseAuth.signOut().then((value) => userCredential = null);
   }
 }

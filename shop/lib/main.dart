@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/screens/homeScreen.dart';
 import 'package:shop/screens/loginScreen.dart';
 import 'package:shop/screens/splashScreen.dart';
-import 'package:shop/services/accountService.dart';
+import 'package:shop/services/loginService.dart';
 
 import 'services/userService.dart';
 

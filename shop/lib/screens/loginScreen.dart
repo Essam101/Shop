@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/screens/homeScreen.dart';
-import 'package:shop/services/accountService.dart';
+import 'package:shop/services/loginService.dart';
 import 'package:shop/services/userService.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   onPressed: () async {
-                    await userAndPasswordAuth.signIn(
+                    await userAndPasswordAuth.signUp(
                       context: context,
                       email: emailController.trim(),
                       password: passwordController.trim(),
