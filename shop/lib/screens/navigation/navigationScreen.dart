@@ -34,7 +34,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         title: const Text('NavigationScreen '),
         centerTitle: true,
       ),
-      drawer: DrawerWidget(),
+      drawer: DrawerWidget(context: context),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

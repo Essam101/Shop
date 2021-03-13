@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop/screens/login/loginScreen.dart';
+import 'package:shop/services/userService.dart';
 
 class DrawerWidget extends StatelessWidget {
+  final context;
+
   const DrawerWidget({
     Key key,
+    this.context,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
+    final userService = Provider.of<UserService>(context, listen: true);
+
     return Drawer(
       // Add a ListView to the drawer. This ensures the user can scroll
       // through the options in the drawer if there isn't enough vertical
@@ -22,17 +30,17 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text('Item 1'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-            },
-          ),
-          ListTile(
-            title: Text('Item 2'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
+            title: Text('logOut'),
+            trailing: Wrap(
+              spacing: 12, // space between two icons
+              children: <Widget>[
+                Icon(Icons.exit_to_app), // icon-1
+              ],
+            ),
+            onTap: () async {
+              await userService.signOut();
+              if (!userService.isLoggedIn)
+                Navigator.pushReplacementNamed(context, LoginScreen.id);
             },
           ),
         ],
@@ -40,5 +48,3 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 }
-
-
