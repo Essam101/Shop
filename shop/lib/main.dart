@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:shop/services/loginService.dart';
 
+import 'route.dart';
 import 'screens/home/homeScreen.dart';
 import 'screens/login/loginScreen.dart';
 import 'screens/navigation/navigationScreen.dart';
@@ -24,19 +25,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserService()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        initialRoute: SplashScreen.id,
-        routes: {
-          SplashScreen.id: (_) => SplashScreen(),
-          NavigationScreen.id: (_) => NavigationScreen(),
-          HomeScreen.id: (_) => HomeScreen(),
-          LoginScreen.id: (_) => LoginScreen(),
-        },
-      ),
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          initialRoute: SplashScreen.id,
+          routes: Routes.routes),
     );
   }
 }
