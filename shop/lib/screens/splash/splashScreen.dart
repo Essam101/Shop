@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop/core/navigation.dart';
-import 'file:///D:/Shop/shop/lib/screens/login/loginScreen.dart';
+import 'package:shop/screens/login/loginScreen.dart';
+import 'package:shop/screens/navigation/navigationScreen.dart';
+import 'package:shop/services/userService.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = "/splashScreen";

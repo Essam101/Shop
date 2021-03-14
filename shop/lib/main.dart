@@ -2,12 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:shop/services/loginService.dart';
-
 import 'route.dart';
-import 'screens/home/homeScreen.dart';
-import 'screens/login/loginScreen.dart';
-import 'screens/navigation/navigationScreen.dart';
 import 'screens/splash/splashScreen.dart';
 import 'services/userService.dart';
 

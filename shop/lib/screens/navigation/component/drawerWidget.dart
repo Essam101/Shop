@@ -14,19 +14,17 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(context) {
     final userService = Provider.of<UserService>(context, listen: true);
-
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('Drawer Header'),
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
           ),
           ListTile(
-            title: Text('logOut'),
+            title: Text('Log out'),
             trailing: Wrap(
               spacing: 12,
               children: <Widget>[
