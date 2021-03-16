@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shop/screens/addOrEditStoreProfile/addOrEditStoreProfileScreen.dart';
 import 'package:shop/screens/home/homeScreen.dart';
 
 import 'component/bottomNavigationBarWidget.dart';
@@ -16,13 +18,18 @@ class _NavigationScreenState extends State<NavigationScreen> {
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Text('Index 1: Business'),
-    Text('Index 3: Settings')
+    Text('Index 1: Settings')
   ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
