@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OurChat.DbModels
+namespace Application.DbModels
 {
     public class Store
     {

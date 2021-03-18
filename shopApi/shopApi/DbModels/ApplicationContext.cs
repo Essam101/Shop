@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OurChat.DbModels;
-
+﻿using Application.DbModels;
+using Microsoft.EntityFrameworkCore;
+ 
 namespace Application.Models
 {
     public class ApplicationContext : DbContext

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "OurChat": {
+    "Application": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

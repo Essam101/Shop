@@ -1,15 +1,15 @@
 ﻿using Application.Core;
+using Application.DbModels;
 using Application.Models;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
-using OurChat.DbModels;
-using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace OurChat.Controllers
+namespace Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
