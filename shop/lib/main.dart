@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/services/storeProfileService.dart';
 
 import 'route.dart';
 import 'screens/splash/splashScreen.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserService()),
+        ChangeNotifierProvider(create: (_) => StoreProfileService()),
       ],
       child: MaterialApp(
           title: 'Flutter Demo',

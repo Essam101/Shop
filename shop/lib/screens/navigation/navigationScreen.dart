@@ -18,7 +18,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Text('Index 1: Business'),
-    Text('Index 1: Settings')
+    AddOrEditStoreProfileScreen()
   ];
 
   void _onItemTapped(int index) {
