@@ -7203,11 +7203,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\shopApi\\ShopApi.csproj",
+      "projectUniqueName": "D:\\Shop\\shopApi\\shopApi\\ShopApi.csproj",
       "projectName": "ShopApi",
-      "projectPath": "C:\\Users\\Administrator\\source\\repos\\shopApi\\ShopApi.csproj",
+      "projectPath": "D:\\Shop\\shopApi\\shopApi\\ShopApi.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\source\\repos\\shopApi\\obj\\",
+      "outputPath": "D:\\Shop\\shopApi\\shopApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

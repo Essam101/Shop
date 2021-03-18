@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mrqeDGyNMnYwNT87uuVgKusCGR3ruxlp2vzm4mQsg4DPFnVe0G+5leQhGmgzxFb2+TCUY5l31ThOVuAn18uA0w==",
+  "dgSpecHash": "9aXQBF4IgPLugD6Z4hUPWpDmnSqHDAUA74cyG6r/kOya5JwTpX4crp30gaP7wiri6di84sCyZLbatqHbbU2EmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\shopApi\\ShopApi.csproj",
+  "projectFilePath": "D:\\Shop\\shopApi\\shopApi\\ShopApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.4\\microsoft.aspnetcore.cryptography.internal.5.0.4.nupkg.sha512",
