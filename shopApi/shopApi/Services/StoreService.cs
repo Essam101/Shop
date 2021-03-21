@@ -17,7 +17,7 @@ namespace Application.Services
         }
         public async Task<List<Store>> GetStores()
         {
-            List<Store> stores = new List<Store>();
+            List<Store> stores = new List<Store>();                                                                                                                                 
             stores = await _context.Stores.ToListAsync();
             return stores;
         }
