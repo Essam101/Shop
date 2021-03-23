@@ -21,7 +21,6 @@ namespace ShopApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://localhost:44353", "https://192.168.1.109/:44353");
                 });
     }
 }
