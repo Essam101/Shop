@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shop/screens/StoresScreen.dart';
 
-import 'screens/home/homeScreen.dart';
-import 'screens/login/loginScreen.dart';
-import 'screens/navigation/navigationScreen.dart';
-import 'screens/splash/splashScreen.dart';
+import 'screens/homeScreen.dart';
+import 'screens/loginScreen.dart';
+import 'screens/navigationScreen.dart';
+import 'screens/splashScreen.dart';
 
 class Routes {
   static final Map<String, WidgetBuilder> routes = {
@@ -11,6 +12,7 @@ class Routes {
     NavigationScreen.id: (_) => NavigationScreen(),
     HomeScreen.id: (_) => HomeScreen(),
     LoginScreen.id: (_) => LoginScreen(),
+    StoresScreen.id: (_) => StoresScreen(),
   };
 
   static Map<String, WidgetBuilder> getAll() => routes;

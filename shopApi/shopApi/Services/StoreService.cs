@@ -1,7 +1,7 @@
 ﻿using Application.DbModels;
 using Application.Models;
 using Microsoft.EntityFrameworkCore;
- using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ namespace Application.Services
         }
         public async Task<List<Store>> GetStores()
         {
-            List<Store> stores = new List<Store>();                                                                                                                                 
+            List<Store> stores = new List<Store>();
             stores = await _context.Stores.ToListAsync();
             return stores;
         }
@@ -40,6 +40,10 @@ namespace Application.Services
             obj.Currency = store.Currency;
             await _context.SaveChangesAsync();
             return store;
+        }
+        public async Task<Store> GetStoreById(int id)
+        {
+            return await _context.Stores.Where(e => e.StoreId == id).FirstOrDefaultAsync();
         }
         public async Task<Store> DeleteStore(int storeId)
         {

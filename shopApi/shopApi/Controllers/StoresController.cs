@@ -3,7 +3,7 @@ using Application.DbModels;
 using Application.Models;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
- using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -27,7 +27,12 @@ namespace Application.Controllers
             var obj = await _storeService.GetStores();
             return ReturnResponse(HttpStatusCode.OK, true, obj);
         }
-
+        [HttpGet("GetStoreById")]
+        public async Task<JsonResult> GetStoreById(int storeId)
+        {
+            var obj = await _storeService.GetStoreById(storeId);
+            return ReturnResponse(HttpStatusCode.OK, true, obj, "Done");
+        }
         [HttpPost("Add")]
         public async Task<JsonResult> AddStore(Store store)
         {

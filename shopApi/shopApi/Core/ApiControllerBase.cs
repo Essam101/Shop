@@ -10,7 +10,7 @@ namespace Application.Core
 {
     public abstract class ApiControllerBase : ControllerBase
     {
-        protected JsonResult ReturnResponse(HttpStatusCode returnCode, bool isValied = false, object data = null, string message = null)
+        protected JsonResult ReturnResponse(HttpStatusCode returnCode, bool isValid = false, object data = null, string message = null)
         {
             if (message == null)
             {
@@ -18,7 +18,7 @@ namespace Application.Core
             }
             var returnModel = new ApiReturnModel
             {
-                IsVailed = isValied,
+                IsValid = isValid,
                 Model = data,
                 Messages = message
             };

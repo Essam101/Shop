@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop/models/prefModel.dart';
 
-class Preferences with PrefModel {
+class Preferences {
   setPreferences({key, val, type}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (type is String) {

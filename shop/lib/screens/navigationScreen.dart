@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:shop/screens/addOrEditStoreProfile/addOrEditStoreProfileScreen.dart';
-import 'package:shop/screens/home/homeScreen.dart';
+import 'package:shop/widgets/bottomNavigationBarWidget.dart';
+import 'package:shop/widgets/drawerWidget.dart';
 
-import 'component/bottomNavigationBarWidget.dart';
-import 'component/drawerWidget.dart';
+import 'addOrEditStoreProfileScreen.dart';
+import 'homeScreen.dart';
+
+
+
 
 class NavigationScreen extends StatefulWidget {
   static const id = "navigationScreen";

@@ -271,3 +271,4 @@ D:\Shop\shopApi\shopApi\obj\Debug\net5.0\ShopApi.dll
 D:\Shop\shopApi\shopApi\obj\Debug\net5.0\ref\ShopApi.dll
 D:\Shop\shopApi\shopApi\obj\Debug\net5.0\ShopApi.pdb
 D:\Shop\shopApi\shopApi\obj\Debug\net5.0\ShopApi.genruntimeconfig.cache
+D:\Shop\shopApi\shopApi\obj\Debug\net5.0\ShopApi.csprojAssemblyReference.cache

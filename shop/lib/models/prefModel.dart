@@ -1,3 +1,4 @@
 class PrefModel {
-  String isLoggedIn = "isLoggedIn";
+ static String isLoggedIn = "isLoggedIn";
+ static String baseUrl = "baseUrl";
 }

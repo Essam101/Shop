@@ -7,7 +7,7 @@ namespace Application.Core
 {
     public class ApiReturnModel
     {
-        public bool IsVailed { get; set; }
+        public bool IsValid { get; set; }
         public object Model { get; set; }
         public string Messages { get; set; }
     }

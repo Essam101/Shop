@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shop/services/loginService.dart';
 import 'package:shop/services/userService.dart';
 
-import '../navigation/navigationScreen.dart';
+import 'navigationScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = "/loginScreen";

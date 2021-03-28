@@ -11,7 +11,7 @@ import 'package:shop/core/image.dart';
 import 'package:shop/models/StoreProfileModel.dart';
 import 'package:shop/services/storeProfileService.dart';
 
-import '../../services/userService.dart';
+import '../services/userService.dart';
 
 class AddOrEditStoreProfileScreen extends StatefulWidget {
   static const id = "/addOrEditStoreProfileScreen";

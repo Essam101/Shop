@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop/screens/login/loginScreen.dart';
+import 'package:shop/screens/StoresScreen.dart';
+import 'package:shop/screens/splashScreen.dart';
+import 'file:///D:/Shop/shop/lib/screens/loginScreen.dart';
 import 'package:shop/services/userService.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -22,6 +24,18 @@ class DrawerWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
+          ),
+          ListTile(
+            title: Text('Stores Screen'),
+            trailing: Wrap(
+              spacing: 12,
+              children: <Widget>[
+                Icon(Icons.store), //
+              ],
+            ),
+            onTap: () async {
+              Navigator.pushNamed(context, StoresScreen.id);
+            },
           ),
           ListTile(
             title: Text('Log out'),
