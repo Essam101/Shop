@@ -24,7 +24,7 @@ class _StoresScreenState extends State<StoresScreen> {
     final _userService = Provider.of<UserService>(context, listen: false);
     // await _storeService.getStores();
     // await _storeService.getUserStore(_userService.userCredential.user.uid);
-     await _storeService.updateStore(StoresModel(
+    /* await _storeService.updateStore(StoresModel(
         workActivity: "",
         storeName: "Essam Salehdsfa",
         storeId: 0,
@@ -34,7 +34,7 @@ class _StoresScreenState extends State<StoresScreen> {
         currency: "",
         creationDate: DateTime.now(),
         userId: _userService.userCredential.user.uid));
-   /* await _storeService.addStore(StoresModel(
+      await _storeService.addStore(StoresModel(
         workActivity: "",
         storeName: "Essam Saleh",
         storeId: 0,
@@ -44,6 +44,7 @@ class _StoresScreenState extends State<StoresScreen> {
         currency: "",
         creationDate: DateTime.now(),
         userId: _userService.userCredential.user.uid));*/
+    await _storeService.deleteStore(_userService.userCredential.user.uid);
   }
 
   @override

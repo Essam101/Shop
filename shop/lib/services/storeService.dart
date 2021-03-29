@@ -45,4 +45,13 @@ class StoreService extends Api with ChangeNotifier {
       }
     });
   }
+  deleteStore(userId) async {
+    await delete(url: "Stores/Delete?userId=$userId").then((value) {
+      if (value.isValid) {
+        print(value.model);
+        JsonCodec codec = new JsonCodec();
+        storeModel = storeModelFromJson(codec.encode(value.model));
+      }
+    });
+  }
 }

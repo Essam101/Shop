@@ -34,10 +34,10 @@ class Api {
     return publicModel;
   }
 
-  Future<PublicModel> delete({url, body}) async {
+  Future<PublicModel> delete({url}) async {
     var _url = await getBaseUrl() + url;
     http.Response response;
-    response = await http.delete(Uri.parse(_url), body: body);
+    response = await http.delete(Uri.parse(_url), headers: await getHeader());
     publicModel = publicModelFromJson(response.body);
     return publicModel;
   }
