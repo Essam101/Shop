@@ -10,6 +10,7 @@ StoresModel storeModelFromJson(String str) => StoresModel.fromJson(json.decode(s
 class StoresModel {
   StoresModel({
     this.storeId,
+    this.userId,
     this.storeName,
     this.storeDetails,
     this.numbersOfUsers,
@@ -20,6 +21,7 @@ class StoresModel {
   });
 
   int storeId;
+  String userId;
   String storeName;
   String storeDetails;
   int numbersOfUsers;
@@ -30,6 +32,7 @@ class StoresModel {
 
   factory StoresModel.fromJson(Map<String, dynamic> json) => StoresModel(
     storeId: json["storeId"],
+    userId: json["userId"],
     storeName: json["storeName"],
     storeDetails: json["storeDetails"],
     numbersOfUsers: json["numbersOfUsers"],
@@ -41,6 +44,7 @@ class StoresModel {
 
   Map<String, dynamic> toJson() => {
     "storeId": storeId,
+    "userId": userId,
     "storeName": storeName,
     "storeDetails": storeDetails,
     "numbersOfUsers": numbersOfUsers,

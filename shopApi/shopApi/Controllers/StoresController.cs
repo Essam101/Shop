@@ -27,10 +27,10 @@ namespace Application.Controllers
             var obj = await _storeService.GetStores();
             return ReturnResponse(HttpStatusCode.OK, true, obj);
         }
-        [HttpGet("GetStoreById")]
-        public async Task<JsonResult> GetStoreById(int storeId)
+        [HttpGet("GetUserStore")]
+        public async Task<JsonResult> GetUserStore(string userId)
         {
-            var obj = await _storeService.GetStoreById(storeId);
+            var obj = await _storeService.GetUserStore(userId);
             return ReturnResponse(HttpStatusCode.OK, true, obj, "Done");
         }
         [HttpPost("Add")]
@@ -44,11 +44,11 @@ namespace Application.Controllers
         [HttpPut("Update")]
         public async Task<JsonResult> UpdateStore(Store store)
         {
-            if (store.StoreId == 0)
+            if (store.UserId == null)
             {
                 return ReturnResponse(HttpStatusCode.BadRequest, false, null, "StoreId is requird ");
             }
-            if (!await _storeService.StoreExists(store.StoreId))
+            if (!await _storeService.StoreExists(store.UserId))
             {
                 return ReturnResponse(HttpStatusCode.NoContent, true, null, "Store Not Exists");
             }
@@ -57,17 +57,17 @@ namespace Application.Controllers
         }
 
         [HttpDelete("Delete")]
-        public async Task<JsonResult> DeleteTodoItem(int StoreId)
+        public async Task<JsonResult> DeleteTodoItem(string userId)
         {
-            if (StoreId == 0)
+            if (userId == null)
             {
                 return ReturnResponse(HttpStatusCode.BadRequest, false, null, "StoreId is requird ");
             }
-            if (!await _storeService.StoreExists(StoreId))
+            if (!await _storeService.StoreExists(userId))
             {
                 return ReturnResponse(HttpStatusCode.NoContent, true, null, "Store Not Exists");
             }
-            var obj = await _storeService.DeleteStore(StoreId);
+            var obj = await _storeService.DeleteStore(userId);
             return ReturnResponse(HttpStatusCode.OK, true, obj, "Delete Succsesfully");
         }
 

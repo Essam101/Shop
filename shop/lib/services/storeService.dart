@@ -17,8 +17,8 @@ class StoreService extends Api with ChangeNotifier {
     });
   }
 
-  getStoreById(storeId) async {
-    await get(url: "Stores/GetStoreById?storeId=$storeId").then((value) {
+  getUserStore(userId) async {
+    await get(url: "Stores/GetUserStore?userId=$userId").then((value) {
       if (value.isValid) {
         print(value.model);
         JsonCodec codec = new JsonCodec();
@@ -28,9 +28,19 @@ class StoreService extends Api with ChangeNotifier {
   }
 
   updateStore(StoresModel storesModel) async {
-    await put(url: "Stores/Update", body: storesModel.toJson()).then((value) {
+    await put(url: "Stores/Update", body: jsonEncode(storesModel.toJson()))
+        .then((value) {
       if (value.isValid) {
-         JsonCodec codec = new JsonCodec();
+        JsonCodec codec = new JsonCodec();
+        storeModel = storeModelFromJson(codec.encode(value.model));
+      }
+    });
+  }
+  addStore(StoresModel storesModel) async {
+    await post(url: "Stores/Add", body: jsonEncode(storesModel.toJson()))
+        .then((value) {
+      if (value.isValid) {
+        JsonCodec codec = new JsonCodec();
         storeModel = storeModelFromJson(codec.encode(value.model));
       }
     });

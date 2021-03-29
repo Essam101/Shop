@@ -31,7 +31,7 @@ namespace Application.Services
         }
         public async Task<Store> UpdateStore(Store store)
         {
-            Store obj = await _context.Stores.Where(s => s.StoreId == store.StoreId).FirstOrDefaultAsync();
+            Store obj = await _context.Stores.Where(s => s.UserId == store.UserId).FirstOrDefaultAsync();
             obj.StoreName = store.StoreName;
             obj.WorkActivity = store.WorkActivity;
             obj.StoreDetails = store.StoreDetails;
@@ -41,20 +41,20 @@ namespace Application.Services
             await _context.SaveChangesAsync();
             return store;
         }
-        public async Task<Store> GetStoreById(int id)
+        public async Task<Store> GetUserStore(string userId)
         {
-            return await _context.Stores.Where(e => e.StoreId == id).FirstOrDefaultAsync();
+            return await _context.Stores.Where(e => e.UserId == userId).FirstOrDefaultAsync();
         }
-        public async Task<Store> DeleteStore(int storeId)
+        public async Task<Store> DeleteStore(string userId)
         {
-            Store obj = await _context.Stores.Where(s => s.StoreId == storeId).FirstOrDefaultAsync();
+            Store obj = await _context.Stores.Where(s => s.UserId == userId).FirstOrDefaultAsync();
             _context.Stores.Remove(obj);
             await _context.SaveChangesAsync();
             return obj;
         }
-        public async Task<bool> StoreExists(int id)
+        public async Task<bool> StoreExists(string userId)
         {
-            return await _context.Stores.AnyAsync(e => e.StoreId == id);
+            return await _context.Stores.AnyAsync(e => e.UserId == userId);
         }
     }
 }

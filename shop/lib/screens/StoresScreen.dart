@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop/models/StoresModel.dart';
 import 'package:shop/services/storeService.dart';
+import 'package:shop/services/userService.dart';
 
 class StoresScreen extends StatefulWidget {
   static const String id = "/storesScreen";
@@ -15,21 +17,33 @@ class _StoresScreenState extends State<StoresScreen> {
   @override
   void initState() {
     super.initState();
-    getData();
+    getData(context);
   }
 
-  getData() async {
-    await _storeService.getStores();
-    await _storeService.getStoreById(3);
-    await _storeService.updateStore(StoresModel(
-        creationDate: DateTime.now(),
-        currency: "",
-        image: "",
-        numbersOfUsers: 0,
+  getData(BuildContext context) async {
+    final _userService = Provider.of<UserService>(context, listen: false);
+    // await _storeService.getStores();
+    // await _storeService.getUserStore(_userService.userCredential.user.uid);
+     await _storeService.updateStore(StoresModel(
+        workActivity: "",
+        storeName: "Essam Salehdsfa",
+        storeId: 0,
         storeDetails: "",
-        storeId: 1,
-        storeName: "",
-        workActivity: ""));
+        numbersOfUsers: 0,
+        image: "",
+        currency: "",
+        creationDate: DateTime.now(),
+        userId: _userService.userCredential.user.uid));
+   /* await _storeService.addStore(StoresModel(
+        workActivity: "",
+        storeName: "Essam Saleh",
+        storeId: 0,
+        storeDetails: "",
+        numbersOfUsers: 0,
+        image: "",
+        currency: "",
+        creationDate: DateTime.now(),
+        userId: _userService.userCredential.user.uid));*/
   }
 
   @override

@@ -9,7 +9,8 @@ namespace Application.DbModels
     public class Store
     {
         [Key]
-        public int StoreId { get; set; }
+        public int StoreId { get; set; } 
+        public string UserId { get; set; }
         public string StoreName { get; set; }
         public string StoreDetails { get; set; }
         public int NumbersOfUsers { get; set; }

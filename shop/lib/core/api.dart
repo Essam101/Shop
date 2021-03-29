@@ -16,10 +16,11 @@ class Api {
     return publicModel;
   }
 
-  Future<PublicModel> post({url}) async {
+  Future<PublicModel> post({url, body}) async {
     var _url = await getBaseUrl() + url;
     http.Response response;
-    response = await http.post(Uri.parse(_url));
+    response = await http.post(Uri.parse(_url),
+        body: body, headers: await getHeader());
     publicModel = publicModelFromJson(response.body);
     return publicModel;
   }
@@ -27,7 +28,8 @@ class Api {
   Future<PublicModel> put({url, body}) async {
     var _url = await getBaseUrl() + url;
     http.Response response;
-    response = await http.put(Uri.parse(_url), body: body);
+    response =
+        await http.put(Uri.parse(_url), body: body, headers: await getHeader());
     publicModel = publicModelFromJson(response.body);
     return publicModel;
   }
@@ -41,7 +43,7 @@ class Api {
   }
 
   Future<Map<String, String>> getHeader() async {
-    return {"fas": "fas"};
+    return {'Content-Type': 'application/json'};
   }
 
   Future<String> getBaseUrl() async {

@@ -44,6 +44,9 @@ namespace ShopApi.Migrations
                     b.Property<string>("StoreName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("WorkActivity")
                         .HasColumnType("nvarchar(max)");
 
