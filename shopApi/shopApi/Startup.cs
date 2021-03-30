@@ -26,6 +26,7 @@ namespace ShopApi
 
             services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddScoped<StoreService, StoreService>();
 
             //services.AddDbContext<TodoContext>(opt =>
