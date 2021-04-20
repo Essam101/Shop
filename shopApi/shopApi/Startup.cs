@@ -7,7 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
- 
+using ShopApi.Core;
+
 namespace ShopApi
 {
     public class Startup
@@ -54,7 +55,7 @@ namespace ShopApi
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.ConfigureBuildInExceptionHandler();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

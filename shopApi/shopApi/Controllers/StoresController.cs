@@ -3,6 +3,7 @@ using Application.DbModels;
 using Application.Models;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using ShopApi.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,11 @@ namespace Application.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetStores()
+        public async Task<JsonResult> GetStores(int? pageNumber, int? pageSize)
         {
             var obj = await _storeService.GetStores();
-            return ReturnResponse(HttpStatusCode.OK, true, obj);
+            var pagenitedObj = PaginatedList<Store>.Create(obj.AsQueryable(), pageNumber ?? 1, pageSize ?? 12);
+            return ReturnResponse(HttpStatusCode.OK, true, pagenitedObj);
         }
         [HttpGet("GetUserStore")]
         public async Task<JsonResult> GetUserStore(string userId)
