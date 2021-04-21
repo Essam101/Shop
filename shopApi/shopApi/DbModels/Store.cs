@@ -18,6 +18,8 @@ namespace Application.DbModels
         public string Image { get; set; }
         public string WorkActivity { get; set; }
         public string Currency { get; set; }
+        public string ActivationKey { get; set; }
+        public bool HasBeenActivated { get; set; }
         public DateTime CreationDate { get; set; }
         public ICollection<Customer> Customers { get; set; }
         public ICollection<Shortcoming> Shortcomings { get; set; }

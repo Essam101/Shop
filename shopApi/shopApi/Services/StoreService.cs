@@ -1,6 +1,7 @@
 ﻿using Application.DbModels;
 using Application.Models;
 using Microsoft.EntityFrameworkCore;
+using ShopApi.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,18 @@ namespace Application.Services
     public class StoreService
     {
         private readonly ApplicationContext _context;
-        public StoreService(ApplicationContext context)
+        private readonly ActivationService _activationService;
+
+        public StoreService(ApplicationContext context, ActivationService activationService)
         {
             _context = context;
+            _activationService = activationService;
         }
+
+
         public async Task<List<Store>> GetStores()
         {
+
             List<Store> stores = new List<Store>();
             stores = await _context.Stores.ToListAsync();
             return stores;
@@ -25,6 +32,9 @@ namespace Application.Services
         public async Task<Store> AddStore(Store store)
         {
             store.CreationDate = DateTime.Now;
+            store.UserId = System.Guid.NewGuid().ToString();
+            store.ActivationKey = _activationService.RandomString(10);
+            store.HasBeenActivated = false;
             await _context.Stores.AddAsync(store);
             await _context.SaveChangesAsync();
             return store;
@@ -36,6 +46,7 @@ namespace Application.Services
             obj.WorkActivity = store.WorkActivity;
             obj.StoreDetails = store.StoreDetails;
             obj.NumbersOfUsers = store.NumbersOfUsers;
+            obj.HasBeenActivated = store.HasBeenActivated;
             obj.Image = store.Image;
             obj.Currency = store.Currency;
             await _context.SaveChangesAsync();

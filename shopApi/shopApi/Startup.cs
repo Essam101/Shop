@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ShopApi.Core;
+using ShopApi.Services;
 
 namespace ShopApi
 {
@@ -29,6 +30,7 @@ namespace ShopApi
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<StoreService, StoreService>();
+           services.AddScoped<ActivationService, ActivationService>();
 
             //services.AddDbContext<TodoContext>(opt =>
             //                       opt.UseInMemoryDatabase("TodoList"));
