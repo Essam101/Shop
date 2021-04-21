@@ -7,6 +7,8 @@ import 'dart:convert';
 List<StoresModel> storesModelFromJson(String str) => List<StoresModel>.from(json.decode(str).map((x) => StoresModel.fromJson(x)));
 
 StoresModel storeModelFromJson(String str) => StoresModel.fromJson(json.decode(str));
+
+
 class StoresModel {
   StoresModel({
     this.storeId,
@@ -17,6 +19,8 @@ class StoresModel {
     this.image,
     this.workActivity,
     this.currency,
+    this.activationKey,
+    this.hasBeenActivated,
     this.creationDate,
   });
 
@@ -28,6 +32,8 @@ class StoresModel {
   String image;
   String workActivity;
   String currency;
+  String activationKey;
+  bool hasBeenActivated;
   DateTime creationDate;
 
   factory StoresModel.fromJson(Map<String, dynamic> json) => StoresModel(
@@ -39,6 +45,8 @@ class StoresModel {
     image: json["image"],
     workActivity: json["workActivity"],
     currency: json["currency"],
+    activationKey: json["activationKey"],
+    hasBeenActivated: json["hasBeenActivated"],
     creationDate: DateTime.parse(json["creationDate"]),
   );
 
@@ -51,21 +59,10 @@ class StoresModel {
     "image": image,
     "workActivity": workActivity,
     "currency": currency,
+    "activationKey": activationKey,
+    "hasBeenActivated": hasBeenActivated,
     "creationDate": creationDate.toIso8601String(),
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

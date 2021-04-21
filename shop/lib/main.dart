@@ -31,7 +31,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Preferences _preferences = new Preferences();
   await Firebase.initializeApp();
-  String localUrl = "https://192.168.1.100:5001/api/";
+  String localUrl = "https://192.168.1.104:5001/api/";
 
   if (kReleaseMode) {
     await _preferences.setPreferences(

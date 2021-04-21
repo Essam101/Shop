@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shop/core/api.dart';
 import 'package:shop/models/StoresModel.dart';
 
-class StoreService extends Api with ChangeNotifier {
+class StoreService extends Api  {
   List<StoresModel> storesModel;
   StoresModel storeModel;
 

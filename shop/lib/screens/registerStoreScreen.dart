@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop/core/constants.dart';
+import 'package:shop/models/StoresModel.dart';
+import 'package:shop/services/storeService.dart';
 import 'package:shop/widgets/custom_shape.dart';
 import 'package:shop/widgets/customappbar.dart';
 import 'package:shop/widgets/responsive_ui.dart';
@@ -17,6 +20,14 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
   double _pixelRatio;
   bool _large;
   bool _medium;
+  TextEditingController _storeName = new TextEditingController();
+  TextEditingController _storeDetails = new TextEditingController();
+  TextEditingController _numbersOfUsers = new TextEditingController();
+  TextEditingController _workActivity = new TextEditingController();
+  TextEditingController _currency = new TextEditingController();
+  TextEditingController _emailId = new TextEditingController();
+  TextEditingController _password = new TextEditingController();
+  StoreService _storeService = new StoreService();
 
   @override
   Widget build(BuildContext context) {
@@ -172,6 +183,7 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
   Widget storeDetails() {
     return CustomTextField(
       keyboardType: TextInputType.text,
+      textEditingController: _storeName,
       icon: Icons.details,
       hint: "Store Details",
     );
@@ -179,6 +191,7 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
 
   Widget numbersOfUsers() {
     return CustomTextField(
+      textEditingController: _storeDetails,
       keyboardType: TextInputType.emailAddress,
       icon: Icons.confirmation_number,
       hint: "Numbers Of Users",
@@ -187,6 +200,7 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
 
   Widget workActivity() {
     return CustomTextField(
+      textEditingController: _workActivity,
       keyboardType: TextInputType.number,
       icon: Icons.work,
       hint: "Work Activity",
@@ -195,6 +209,7 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
 
   Widget currency() {
     return CustomTextField(
+      textEditingController: _currency,
       keyboardType: TextInputType.number,
       icon: Icons.monetization_on_rounded,
       hint: "Currency",
@@ -203,6 +218,7 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
 
   Widget email() {
     return CustomTextField(
+      textEditingController: _emailId,
       keyboardType: TextInputType.emailAddress,
       icon: Icons.email,
       hint: "Email ID",
@@ -211,6 +227,7 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
 
   Widget passwordTextFormField() {
     return CustomTextField(
+      textEditingController: _password,
       keyboardType: TextInputType.text,
       obscureText: true,
       icon: Icons.lock,
@@ -247,8 +264,19 @@ class _RegisterStoreScreenState extends State<RegisterStoreScreen> {
     return RaisedButton(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-      onPressed: () {
-        print("Routing to your account");
+      onPressed: () async {
+        await _storeService.addStore(StoresModel(
+            storeId: 0,
+            activationKey: "",
+            hasBeenActivated: false,
+            image: "",
+            userId: _emailId.text,
+            currency: _currency.text,
+            numbersOfUsers: 5,
+            creationDate: DateTime.now(),
+            storeDetails: _storeDetails.text,
+            storeName: _storeName.text,
+            workActivity: _workActivity.text));
       },
       textColor: Colors.white,
       padding: EdgeInsets.all(0.0),
