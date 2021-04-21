@@ -8,7 +8,7 @@ import 'screens/splashScreen.dart';
 
 class Routes {
   static final Map<String, WidgetBuilder> routes = {
-    SplashScreen.id: (_) => SplashScreen(),
+    ///SplashScreen.id: (_) => SplashScreen(),
     NavigationScreen.id: (_) => NavigationScreen(),
     HomeScreen.id: (_) => HomeScreen(),
     LoginScreen.id: (_) => LoginScreen(),
