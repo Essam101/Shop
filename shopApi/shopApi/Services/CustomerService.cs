@@ -18,9 +18,9 @@ namespace ShopApi.Services
         }
 
 
-        public async Task<List<Customer>> GetCustomers()
+        public async Task<List<Customer>> GetCustomers(int storeId)
         {
-            List<Customer> customer = await _context.Customers.ToListAsync();
+            List<Customer> customer = await _context.Customers.Where(s => s.StoreId == storeId).ToListAsync();
             return customer;
         }
 
