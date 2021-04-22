@@ -30,10 +30,8 @@ namespace ShopApi
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<StoreService, StoreService>();
-           services.AddScoped<ActivationService, ActivationService>();
-
-            //services.AddDbContext<TodoContext>(opt =>
-            //                       opt.UseInMemoryDatabase("TodoList"));
+            services.AddScoped<ActivationService, ActivationService>();
+            services.AddScoped<CustomerService, CustomerService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

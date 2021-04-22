@@ -23,9 +23,7 @@ namespace Application.Services
 
         public async Task<List<Store>> GetStores()
         {
-
-            List<Store> stores = new List<Store>();
-            stores = await _context.Stores.ToListAsync();
+            List<Store> stores = await _context.Stores.ToListAsync();
             return stores;
         }
 
@@ -52,10 +50,12 @@ namespace Application.Services
             await _context.SaveChangesAsync();
             return store;
         }
+
         public async Task<Store> GetUserStore(string userId)
         {
             return await _context.Stores.Where(e => e.UserId == userId).FirstOrDefaultAsync();
         }
+
         public async Task<Store> DeleteStore(string userId)
         {
             Store obj = await _context.Stores.Where(s => s.UserId == userId).FirstOrDefaultAsync();
